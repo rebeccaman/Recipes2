@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe</title>
+    <link rel="stylesheet" href="/StyleRecipe.css">
+</head>
+<body>
+<h1 th:text="${recipe.name}"></h1>
+<div>
+    <p><a href="/Home">Back to all recipes</a></p>
+</div>
+<div>
+    <p><a th:href="'/Home/Cart?id=' + ${recipe.id}">Add this recipe to your Shopping cart</a></p>
+</div>
+        <h2>Recipe</h2>
+        <p th:text="${recipe.name}"></p>
+        <h2>Cuisine</h2>
+        <p th:text="${recipe.cuisine}"></p>
+        <h2>Difficulty</h2>
+        <p th:text="${recipe.difficulty}"></p>
+        <h2>Nr. of ingredients</h2>
+        <p th:text="'This recipe has ' + ${recipe.numOfIngredients} + ' number of ingredients'"></p>
+        <h2>Vegetarian</h2>
+        <p th:if="${recipe.isVegetarian==true}" th:text="YES"></p>
+        <p th:if="${recipe.isVegetarian==false}" th:text="NO"></p>
+        <h2>Ingredients</h2>
+        <p th:text="${recipe.ingredients}"></p>
+        <h2>Cooking method</h2>
+        <div class="card" style="width: 16rem;">
+            <p class="card-text" th:text="${recipe.description}"></p>
+        </div>
+        <p><img width=400 th:src="'/'+ ${recipe.imageName}"/></p>
+</body>
+</html>

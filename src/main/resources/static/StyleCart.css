@@ -1,0 +1,33 @@
+body {
+text-align: center;
+}
+
+h1 {
+    color: #c52541;
+    font-size: 2em;
+    margin: 0;
+    margin-bottom: 7px;
+    padding: 4px;
+    letter-spacing: 0.5em;
+    border-bottom-style: solid;
+    border-bottom-width: 0.5em;
+}
+
+
+p {
+line-height: 21px;
+font-size: 0.8em;
+}
+
+h2 {
+color: #c52541;
+font-size: 1em;
+}
+
+th, table {
+    #border-style: dashed;
+    #border-width: 1px;
+    #border-color: red;
+    padding:10px;
+    border: 1px red dashed;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="/StyleCart.css">
+</head>
+<body>
+<div>
+    <p><a href="/Home">Back to all recipes</a></p>
+</div>
+<table th:each = "recipe : ${session.cart}">
+    <tr>
+        <th>Recipe</th>
+        <th th:text="${recipe.name}"></th>
+    </tr>
+    <tr>
+        <th>Ingredients</th>
+        <th th:text="${recipe.ingredients}"></th>
+    </tr>
+</table>
+</body>
+</html>
