@@ -24,15 +24,15 @@ public class RecipeController {
         return "Recipes";
     }
 
-    @GetMapping("/Home/recipe/{id}")
-    public String recipe(Model model, @PathVariable Long id) {
+   @GetMapping("/Home/recipe/{id}")
+    public String recipe(Model model, @PathVariable int id) {
         Recipe recipe = repository.getRecipe(id);
         model.addAttribute("recipe", recipe);
 
         return "Recipe";
     }
 
-    @GetMapping ("/Home/Cart")
+  /*  @GetMapping ("/Home/Cart")
     public String getCart(HttpSession session, @RequestParam (required = false) Long id){
         if (id ==null){
             return "Cart";
@@ -45,6 +45,6 @@ public class RecipeController {
         Recipe recipe = repository.getRecipe(id);
         CartList.add(recipe);
         return "redirect:/Home/Cart";
-    }
+    } */
 
 }

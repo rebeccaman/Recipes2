@@ -21,7 +21,7 @@ public class RecipeRepository {
         List<Recipe> recipes = new ArrayList<>();
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT id, title, author, price FROM book")) {
+             ResultSet rs = stmt.executeQuery("SELECT RECIPE.ID, RECIPE.NAME, CUISINE.NAME AS CUISINE, NUMOFINGREDIENTS,ISVEGETARIAN, DIFFICULTY.NAME AS DIFFICULTY,DESCRIPTION,INGREDIENTS,IMAGE_NAME FROM RECIPE JOIN CUISINE ON RECIPE.CUISINE_ID = CUISINE.ID JOIN DIFFICULTY ON RECIPE.DIFFICULTY_ID = DIFFICULTY.ID")) {
 
             while (rs.next()){
                 recipes.add(rsRecipe(rs));
@@ -38,7 +38,7 @@ public class RecipeRepository {
         Recipe recipe = null;
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT id, title, author, price FROM book WHERE id = " + id)) {
+             ResultSet rs = stmt.executeQuery("SELECT RECIPE.ID, RECIPE.NAME, CUISINE.NAME AS CUISINE, NUMOFINGREDIENTS,ISVEGETARIAN, DIFFICULTY.NAME AS DIFFICULTY,DESCRIPTION,INGREDIENTS,IMAGE_NAME FROM RECIPE JOIN CUISINE ON RECIPE.CUISINE_ID = CUISINE.ID JOIN DIFFICULTY ON RECIPE.DIFFICULTY_ID = DIFFICULTY.ID WHERE RECIPE.ID = " + id)) {
 
             if (rs.next()){
                 recipe = rsRecipe(rs);
@@ -56,14 +56,14 @@ public class RecipeRepository {
                 rs.getString("cuisine"), //cuisine name by a join statement
                 rs.getInt("numOfIngredients"),
                 rs.getBoolean("isVegetarian"),
-                rs.getString("difficulty_id"),
+                rs.getString("difficulty"),
                 rs.getString("description"),
                 rs.getString("ingredients"),
                 rs.getString("image_name"));
     }
 
-    /*
-    public List<Recipe> getRecipes() {
+
+   /* public List<Recipe> getRecipes() {
         return recipes;
     }
 
@@ -74,7 +74,7 @@ public class RecipeRepository {
             }
         }
         return null;
-    }
+    } */
 
-     */
+
 }

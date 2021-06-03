@@ -3,16 +3,15 @@ package com.example.Recipes2;
 public class Recipe {
     private long id;
     private String name;
-    private Cuisine cuisine;
+    private String cuisine;
     private int numOfIngredients;
-    private boolean isVegetarian;
-    private Difficulty difficulty;
+    private Boolean isVegetarian;
+    private String difficulty;
     private String description;
     private String ingredients;
     private String imageName;
 
-    public Recipe (Long id, String name, Cuisine cuisine, Integer numOfIngredients,
-                   boolean isVegetarian, Difficulty difficulty, String description, String ingredients, String imageName) {
+    public Recipe(long id, String name, String cuisine, int numOfIngredients, boolean isVegetarian, String difficulty, String description, String ingredients, String imageName) {
         this.id = id;
         this.name = name;
         this.cuisine = cuisine;
@@ -24,6 +23,14 @@ public class Recipe {
         this.imageName = imageName;
     }
 
+    public String getCuisine() {
+        return cuisine;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
     public long getId() {
         return id;
     }
@@ -32,20 +39,12 @@ public class Recipe {
         return name;
     }
 
-    public Cuisine getCuisine() {
-        return cuisine;
-    }
-
     public int getNumOfIngredients() {
         return numOfIngredients;
     }
 
-    public boolean isVegetarian() {
+    public Boolean isVegetarian() {
         return isVegetarian;
-    }
-
-    public Difficulty getDifficulty() {
-        return difficulty;
     }
 
     public String getDescription() {
