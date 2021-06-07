@@ -71,7 +71,7 @@ INSERT INTO RECIPE(NAME, CUISINE_ID, NUMOFINGREDIENTS, ISVEGETARIAN, DIFFICULTY_
             ps.setString(1,recipe.getName());
             ps.setString(2, recipe.getCuisine());
             ps.setInt(3, recipe.getNumOfIngredients());
-            ps.setBoolean(4, recipe.getIsVegetarian());
+            ps.setBoolean(4, recipe.getVegetarian());
             ps.setString(5,recipe.getDifficulty());
             ps.setString(6,recipe.getDescription());
             ps.setString(7,recipe.getIngredients());

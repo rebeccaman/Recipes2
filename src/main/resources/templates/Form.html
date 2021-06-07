@@ -20,7 +20,7 @@
   <option th:field="*{cuisine}" th:value = "AMERICAN">AMERICAN</option>
   <option th:field="*{cuisine}" th:value = "MEXICAN">MEXICAN</option>
   </select>
-  Vegetarian: <input type ="checkbox" th:field="*{isVegetarian}"/>
+  Vegetarian: <input type ="checkbox" th:field="*{vegetarian}"/>
   <p th:if="${#fields.hasErrors('difficulty')}">Difficulty has not been selected!</p>
   Difficulty: <select th:field="*{difficulty}">
   <option th:field="*{difficulty}" th:value = "EASY">EASY</option>

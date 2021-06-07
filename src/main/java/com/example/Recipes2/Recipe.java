@@ -2,6 +2,7 @@ package com.example.Recipes2;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
 public class Recipe {
@@ -10,9 +11,9 @@ public class Recipe {
     private String name;
     @Size(min=1,max=100)
     private String cuisine;
-    @Positive
+    @PositiveOrZero
     private int numOfIngredients;
-    private Boolean isVegetarian;
+    private Boolean isVegetarian = false;
     @Size(min=1,max=100)
     private String difficulty;
     @Size(min=1,max=1000)
@@ -44,6 +45,46 @@ public class Recipe {
         return difficulty;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCuisine(String cuisine) {
+        this.cuisine = cuisine;
+    }
+
+    public void setNumOfIngredients(int numOfIngredients) {
+        this.numOfIngredients = numOfIngredients;
+    }
+
+    public Boolean getVegetarian() {
+        return isVegetarian;
+    }
+
+    public void setVegetarian(Boolean vegetarian) {
+        isVegetarian = vegetarian;
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
     public long getId() {
         return id;
     }
@@ -57,9 +98,6 @@ public class Recipe {
     }
 
 
-    public Boolean getIsVegetarian() {
-        return isVegetarian;
-    }
 
 
     public String getDescription() {
