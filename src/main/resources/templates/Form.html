@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"></meta>
+  <title>Recipes</title>
+</head>
+<body>
+<h1>Add your recipes</h1>
+
+<p th:if="${errorMsg != null}" th:text="${errorMsg}"></p>
+
+<form action="/saveRecipe" th:object="${recipe}" method="POST">
+  <p th:if="${#fields.hasErrors('name')}">Name is empty!</p>
+  Name: <input type="text" th:field="*{name}"/>
+  <p th:if="${#fields.hasErrors('cuisine')}">Cuisine has not been selected!</p>
+  Cuisine: <select th:field="*{cuisine}">
+  <option th:field="*{cuisine}" th:value = "ITALIAN">ITALIAN</option>
+  <option th:field="*{cuisine}" th:value = "FRENCH">FRENCH</option>
+  <option th:field="*{cuisine}" th:value = "ASIAN">ASIAN</option>
+  <option th:field="*{cuisine}" th:value = "AMERICAN">AMERICAN</option>
+  <option th:field="*{cuisine}" th:value = "MEXICAN">MEXICAN</option>
+  </select>
+  Vegetarian: <input type ="checkbox" th:field="*{isVegetarian}"/>
+  <p th:if="${#fields.hasErrors('difficulty')}">Difficulty has not been selected!</p>
+  Difficulty: <select th:field="*{difficulty}">
+  <option th:field="*{difficulty}" th:value = "EASY">EASY</option>
+  <option th:field="*{difficulty}" th:value = "MEDIUM">MEDIUM</option>
+  <option th:field="*{difficulty}" th:value = "DIFFICULT">DIFFICULT</option>
+  </select>
+  <p th:if="${#fields.hasErrors('description')}">Description is empty!</p>
+  Description: <input type="text" th:field="*{description}"/>
+  <p th:if="${#fields.hasErrors('ingredients')}">Ingredients is empty!</p>
+  Ingredients: <input type="text" th:field="*{ingredients}"/>
+  <input th:if="${id != null}" type="hidden" th:field="*{id}"/>
+  <input type="submit" value="Save recipe">
+</form>
+</body>

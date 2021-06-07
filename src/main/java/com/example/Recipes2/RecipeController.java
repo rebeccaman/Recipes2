@@ -3,11 +3,11 @@ package com.example.Recipes2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,8 +32,8 @@ public class RecipeController {
         return "Recipe";
     }
 
-  /*  @GetMapping ("/Home/Cart")
-    public String getCart(HttpSession session, @RequestParam (required = false) Long id){
+    @GetMapping ("/Home/Cart")
+    public String getCart(HttpSession session, @RequestParam (required = false) Integer id){
         if (id ==null){
             return "Cart";
         }
@@ -45,6 +45,24 @@ public class RecipeController {
         Recipe recipe = repository.getRecipe(id);
         CartList.add(recipe);
         return "redirect:/Home/Cart";
-    } */
+    }
+
+
+
+    @GetMapping("/Add")
+    public String addRecipes(Model model) {
+        model.addAttribute("recipe", new Recipe());
+        return "Form";
+    }
+
+
+    @PostMapping("/saveRecipe")
+    public String set(@Valid Recipe recipe, BindingResult result) {
+        if (result.hasErrors()) {
+            return "Form";
+        }
+        repository.save(recipe);
+        return "redirect:/Add";
+    }
 
 }

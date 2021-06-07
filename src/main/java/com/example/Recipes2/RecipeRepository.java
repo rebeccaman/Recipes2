@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,19 +59,30 @@ public class RecipeRepository {
                 rs.getString("image_name"));
     }
 
+/*
 
-   /* public List<Recipe> getRecipes() {
-        return recipes;
+INSERT INTO RECIPE(NAME, CUISINE_ID, NUMOFINGREDIENTS, ISVEGETARIAN, DIFFICULTY_ID, DESCRIPTION, INGREDIENTS, IMAGE_NAME) VALUES  ('KÖTTBULLAR', (SELECT ID FROM CUISINE WHERE NAME = 'ITALIAN') ,  3, FALSE, 2, 'RECIPE TEXT', 'INGREDIENTS', 'KOTTBULLAR.PNG')
+*/
+
+    public void save(Recipe recipe) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("INSERT INTO RECIPE(NAME, CUISINE_ID, NUMOFINGREDIENTS, ISVEGETARIAN, DIFFICULTY_ID, DESCRIPTION, INGREDIENTS, IMAGE_NAME) VALUES " +
+                     " (?,(SELECT ID FROM CUISINE WHERE NAME = ?), ?,?, (SELECT ID FROM CUISINE WHERE NAME = ?), ?, ?, ?) ")) {
+            ps.setString(1,recipe.getName());
+            ps.setString(2, recipe.getCuisine());
+            ps.setInt(3, recipe.getNumOfIngredients());
+            ps.setBoolean(4, recipe.getIsVegetarian());
+            ps.setString(5,recipe.getDifficulty());
+            ps.setString(6,recipe.getDescription());
+            ps.setString(7,recipe.getIngredients());
+            ps.setString(8, recipe.getImageName());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    public Recipe getRecipe(Long id) {
-        for (Recipe recipe : recipes) {
-            if (recipe.getId() == id) {
-                return recipe;
-            }
-        }
-        return null;
-    } */
+
 
 
 }

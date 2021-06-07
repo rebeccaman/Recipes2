@@ -1,13 +1,23 @@
 package com.example.Recipes2;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+
 public class Recipe {
     private long id;
+    @Size(min=1,max=100)
     private String name;
+    @Size(min=1,max=100)
     private String cuisine;
+    @Positive
     private int numOfIngredients;
     private Boolean isVegetarian;
+    @Size(min=1,max=100)
     private String difficulty;
+    @Size(min=1,max=1000)
     private String description;
+    @Size(min=1,max=100)
     private String ingredients;
     private String imageName;
 
@@ -23,6 +33,8 @@ public class Recipe {
         this.ingredients = ingredients;
         this.imageName = imageName;
     }
+
+    public Recipe() {};
 
     public String getCuisine() {
         return cuisine;
