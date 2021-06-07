@@ -59,15 +59,10 @@ public class RecipeRepository {
                 rs.getString("image_name"));
     }
 
-/*
-
-INSERT INTO RECIPE(NAME, CUISINE_ID, NUMOFINGREDIENTS, ISVEGETARIAN, DIFFICULTY_ID, DESCRIPTION, INGREDIENTS, IMAGE_NAME) VALUES  ('KÖTTBULLAR', (SELECT ID FROM CUISINE WHERE NAME = 'ITALIAN') ,  3, FALSE, 2, 'RECIPE TEXT', 'INGREDIENTS', 'KOTTBULLAR.PNG')
-*/
-
     public void save(Recipe recipe) {
         try (Connection conn = dataSource.getConnection();
              PreparedStatement ps = conn.prepareStatement("INSERT INTO RECIPE(NAME, CUISINE_ID, NUMOFINGREDIENTS, ISVEGETARIAN, DIFFICULTY_ID, DESCRIPTION, INGREDIENTS, IMAGE_NAME) VALUES " +
-                     " (?,(SELECT ID FROM CUISINE WHERE NAME = ?), ?,?, (SELECT ID FROM CUISINE WHERE NAME = ?), ?, ?, ?) ")) {
+                     " (?,(SELECT ID FROM CUISINE WHERE NAME = ?), ?,?, (SELECT ID FROM DIFFICULTY WHERE NAME = ?), ?, ?, ?) ")) {
             ps.setString(1,recipe.getName());
             ps.setString(2, recipe.getCuisine());
             ps.setInt(3, recipe.getNumOfIngredients());

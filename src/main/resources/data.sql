@@ -22,5 +22,5 @@ INSERT INTO RECIPE (NAME, CUISINE_ID, numOfIngredients, isVegetarian, DIFFICULTY
 INSERT INTO RECIPE (NAME, CUISINE_ID, numOfIngredients, isVegetarian, DIFFICULTY_ID, DESCRIPTION, INGREDIENTS, IMAGE_NAME) VALUES ('American Pancakes',SELECT ID FROM CUISINE WHERE NAME ='AMERICAN', 7, TRUE,SELECT ID FROM DIFFICULTY WHERE NAME ='DIFFICULT', '1. Sift the flour, baking poweder, salt and caster sugar into a large bowl. 2. Whisk with milk, egg and melted butter. 3. Add a knob of butter in a medium heated  frying pan. Add a ladle of batter and wait until it starts bubbling. "Turn it over and cook until both sides are golden brown. 4. Repeat until all batter is used up. 5. Serve with maple syrup and extra butter!', 'Flour, Baking Powder, Salt, Sugar, Milk, Egg, Butter', 'AmericanPancakes.jpg');
 
 
---INSERT INTO PURCHASE (BOOK_ID, CUSTOMER_ID, PURCHASE_DATE) VALUES ((SELECT ID FROM BOOK WHERE AUTHOR = 'Douglas Adams'), (SELECT ID FROM CUSTOMER WHERE FIRST_NAME = 'Donald'), '2019-01-07');
+
 

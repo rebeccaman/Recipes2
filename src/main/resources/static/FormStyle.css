@@ -1,0 +1,61 @@
+h1 {
+    color: #d81c3d;
+
+}
+
+form {
+    color: #d81c3d;
+    font-size:   15pt;
+    line-height: 30pt;
+
+}
+input[type=text] {
+  background-color: #3CBC8D;
+  color: white;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}
+
+option, select {
+  background-color: #3CBC8D;
+  color: white;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type=checkbox] {
+  color: #3CBC8D;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size:   15pt;
+}
+
+.textarea {
+  width: 40%;
+  height: 80px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}
+
+.textarea2 {
+  width: 40%;
+  height: 40px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}

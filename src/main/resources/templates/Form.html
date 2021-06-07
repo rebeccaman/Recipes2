@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8"></meta>
   <title>Recipes</title>
+  <link rel="stylesheet" href="/FormStyle.css">
 </head>
 <body>
-<h1>Add your recipes</h1>
+<h1>Add your favourite recipe!</h1>
 
 <p th:if="${errorMsg != null}" th:text="${errorMsg}"></p>
 
 <form action="/saveRecipe" th:object="${recipe}" method="POST">
+  <div>
   <p th:if="${#fields.hasErrors('name')}">Name is empty!</p>
   Name: <input type="text" th:field="*{name}"/>
+  </div>
+  <div>
   <p th:if="${#fields.hasErrors('cuisine')}">Cuisine has not been selected!</p>
   Cuisine: <select th:field="*{cuisine}">
   <option th:field="*{cuisine}" th:value = "ITALIAN">ITALIAN</option>
@@ -20,17 +24,30 @@
   <option th:field="*{cuisine}" th:value = "AMERICAN">AMERICAN</option>
   <option th:field="*{cuisine}" th:value = "MEXICAN">MEXICAN</option>
   </select>
+  </div>
+  <div>
+  <p th:if="${#fields.hasErrors('numOfIngredients')}">The number of ingredients should be a positive number or zero!</p>
+  Number of Ingredients: <input type="text" th:field="*{numOfIngredients}"/>
+  </div>
+  <div>
   Vegetarian: <input type ="checkbox" th:field="*{vegetarian}"/>
   <p th:if="${#fields.hasErrors('difficulty')}">Difficulty has not been selected!</p>
+  </div>
+  <div>
   Difficulty: <select th:field="*{difficulty}">
   <option th:field="*{difficulty}" th:value = "EASY">EASY</option>
   <option th:field="*{difficulty}" th:value = "MEDIUM">MEDIUM</option>
   <option th:field="*{difficulty}" th:value = "DIFFICULT">DIFFICULT</option>
   </select>
+  </div>
+  <div>
+    <p th:if="${#fields.hasErrors('ingredients')}">Ingredients is empty!</p>
+    Ingredients: <input class = "textarea2" type="text" th:field="*{ingredients}"/>
+  </div>
+  <div>
   <p th:if="${#fields.hasErrors('description')}">Description is empty!</p>
-  Description: <input type="text" th:field="*{description}"/>
-  <p th:if="${#fields.hasErrors('ingredients')}">Ingredients is empty!</p>
-  Ingredients: <input type="text" th:field="*{ingredients}"/>
+  Description: <input class = "textarea" type="text" th:field="*{description}"/>
+  </div>
   <input th:if="${id != null}" type="hidden" th:field="*{id}"/>
   <input type="submit" value="Save recipe">
 </form>
