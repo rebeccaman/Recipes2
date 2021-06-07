@@ -11,7 +11,8 @@ public class Recipe {
     private String ingredients;
     private String imageName;
 
-    public Recipe(long id, String name, String cuisine, int numOfIngredients, boolean isVegetarian, String difficulty, String description, String ingredients, String imageName) {
+
+    public Recipe(long id, String name, String cuisine, int numOfIngredients, Boolean isVegetarian, String difficulty, String description, String ingredients, String imageName) {
         this.id = id;
         this.name = name;
         this.cuisine = cuisine;
@@ -43,9 +44,11 @@ public class Recipe {
         return numOfIngredients;
     }
 
-    public Boolean isVegetarian() {
+
+    public Boolean getIsVegetarian() {
         return isVegetarian;
     }
+
 
     public String getDescription() {
         return description;

@@ -20,10 +20,10 @@
         <h2>Difficulty</h2>
         <p th:text="${recipe.difficulty}"></p>
         <h2>Nr. of ingredients</h2>
-        <p th:text="'This recipe has ' + ${recipe.numOfIngredients} + ' number of ingredients'"></p>
+        <p th:text="'This recipe has ' + ${recipe.numOfIngredients} + ' different of ingredients'"></p>
         <h2>Vegetarian</h2>
-        <p th:if="${recipe.isVegetarian==TRUE}" th:text="YES"></p>
-        <p th:if="${recipe.isVegetarian==FALSE}" th:text="NO"></p>
+        <p th:if="${recipe.isVegetarian==true}" th:text="YES"></p>
+        <p th:if="${recipe.isVegetarian==false}" th:text="NO"></p>
         <h2>Ingredients</h2>
         <p th:text="${recipe.ingredients}"></p>
         <h2>Cooking method</h2>
